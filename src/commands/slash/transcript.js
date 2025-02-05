@@ -53,7 +53,7 @@ module.exports = class TranscriptSlashCommand extends SlashCommand {
 		if (ticket.createdById === interaction.member.id) return true;
 		if (interaction.client.supers.includes(interaction.member.id)) return true;
 		if (interaction.member.permissions.has(PermissionsBitField.Flags.ManageGuild)) return true;
-		if (interaction.member.roles.cache.filter(role => ticket.category.staffRoles.includes(role.id)).size > 0) return true;
+		if (interaction.member.roles.cache.some(role => ticket.category.staffRoles.includes(role.id))) return true;
 		return false;
 	}
 
